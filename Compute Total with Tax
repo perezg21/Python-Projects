@@ -1,0 +1,24 @@
+# Programmer: Lupe Perez
+# Updated: January 27 2024
+
+# Reason for assignment: 
+#The program will compute the quantity of the toy times the price for a total amount with tax included.
+
+
+toy = input("Type in the toy name ")
+price = input("Type in the unit price ")
+quantity = int(input("Enter the amount ordered  "))
+
+
+# The program segment below prompts the user for the name, price and quantity
+
+# The computation below computes the total quantity of the toy ordered
+
+total = float(price) * float(quantity)
+
+
+# The calculation below computes the total with tax
+totalwithtax = (total * .07) + total
+
+# The program will print the toy name and total with tax
+print("The total amount of your order for the toy " , float(totalwithtax))
