@@ -56,10 +56,6 @@ entry.config(bg='#111111')
 entry.config(fg='white')
 entry.config(width=10)
 
-# entry.insert(0, 'Spongebob')
-# entry.config(state=DISABLED)  # ACTIVE/DISABLED
-# entry.config(show='*')
-# entry.config(show='$')
 
 entry.pack()
 
