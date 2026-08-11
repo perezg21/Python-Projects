@@ -1,0 +1,127 @@
+# Programmer: Lupe Perez
+# Updated: April 6, 2024
+# Purpose: SQLite creating and modifying employee records
+
+import sqlite3
+
+
+class Employee:
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.pay = pay
+
+    def email(self):
+        return '{}.{}@email.com'.format(self.first, self.last)
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def __repr__(self):
+        return "Employee('{}', '{}', {})".format(
+            self.first, self.last, self.pay
+        )
+
+
+# Connect to the employees database
+conn = sqlite3.connect('employees.db')
+
+# Create a cursor
+c = conn.cursor()
+
+
+# Create the employees table if it does not already exist
+c.execute("""
+CREATE TABLE IF NOT EXISTS employees (
+    first TEXT,
+    last TEXT,
+    pay INTEGER
+)
+""")
+
+
+# Insert an employee
+def insert_emp(emp):
+    with conn:
+        c.execute("""
+        INSERT INTO employees
+        VALUES (:first, :last, :pay)
+        """,
+        {
+            'first': emp.first,
+            'last': emp.last,
+            'pay': emp.pay
+        })
+
+
+# Search for employees by last name
+def get_emps_by_name(lastname):
+    c.execute("""
+    SELECT * FROM employees
+    WHERE last = :last
+    """,
+    {'last': lastname})
+
+    return c.fetchall()
+
+
+# Update an employee's pay
+def update_pay(emp, pay):
+    with conn:
+        c.execute("""
+        UPDATE employees
+        SET pay = :pay
+        WHERE first = :first
+        AND last = :last
+        """,
+        {
+            'first': emp.first,
+            'last': emp.last,
+            'pay': pay
+        })
+
+
+# Remove an employee
+def remove_emp(emp):
+    with conn:
+        c.execute("""
+        DELETE FROM employees
+        WHERE first = :first
+        AND last = :last
+        """,
+        {
+            'first': emp.first,
+            'last': emp.last
+        })
+
+
+# Create employee objects
+emp_1 = Employee('John', 'Doe', 80000)
+emp_2 = Employee('Lupe', 'Perez', 90000)
+
+
+# Insert employees into the database
+insert_emp(emp_1)
+insert_emp(emp_2)
+
+
+# Find John Doe
+emps = get_emps_by_name('Doe')
+print(emps)
+
+
+# Change Lupe's pay from $90,000 to $95,000
+update_pay(emp_2, 95000)
+
+
+# Remove John Doe
+remove_emp(emp_1)
+
+
+# Find Lupe Perez
+emps = get_emps_by_name('Perez')
+print(emps)
+
+
+# Close the database connection
+conn.close()
