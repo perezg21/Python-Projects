@@ -1,0 +1,26 @@
+# Programmer: Lupe Perez
+# Updated: February 10 2024
+
+# Reason for assignment:
+
+# The program below uses an if...elseif...decision structure
+# to determine if a student is eligible for the 
+# Great Student Honors
+
+# named constants to represent grade point average and credit hours 
+
+score = int(input('Enter a score between 0 and 4: '))
+hours = int(input('Enter credit hours between 0 and 120: '))
+
+#Get the gpa and credit hours rate
+
+if score >= 3.0 and hours >= 60:
+    print('Congratulations you are being awarded the Great Student Honor Award!')
+
+if score <= 2.9 and hours <= 59:
+    print('Sorry, you are not eligible yet but keep working hard, you will get there')
+
+
+if score <=2.9 and hours >= 60:
+    print("The math is not mathing")
+    
