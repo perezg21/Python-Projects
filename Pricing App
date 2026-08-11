@@ -1,0 +1,98 @@
+#programmer: Lupe Perez
+#updated: February 24, 2024
+
+#purpose: creating a pricing app for Louie's Landscaping business
+
+#the variable for store prices
+
+seeds_price = 10
+mulch_price = 12
+gravel_price = 14
+pavers_price = 19
+sales_tax = 0.07
+
+
+#Create a main menu for Landscaping Materials
+
+def main_menu():
+    print("**************************************************************")
+    print("**                                                          **")
+    print("                   Landscaping Materials                    **")
+    print("                                                            **")
+    print("Product and price per square foot:                          **")
+    print("                                                            **")
+    print("Seeds   $10                                                 **")
+    print("Mulch   $12                                                 **")
+    print("Gravel  $14                                                 **")
+    print("Pavers  $19                                                 **")
+    print("**************************************************************")
+    print("")
+
+#Ask user to enter S for seeds
+#M for mulch
+#G for gravel
+#P for pavers
+
+    print("Enter S for seeds, M for Mulch, G for gravel, P for pavers.")
+
+    #the variables to the material selected
+    item_selected = str(input("please select a material from the menu: "))
+
+    #if statements to decide what material function is needed determined by selection
+    if item_selected == "S":
+        seeds_func()
+    elif item_selected == "M":
+        mulch_func()
+    elif item_selected == "G":
+        gravel_func()
+    elif item_selected == "P":
+        pavers_func()
+    else: print("Selection Not Available")
+
+
+#functions for when a material is selected and the calculations
+
+def seeds_func():
+    product = "Seeds"
+    sqft = float(input("How many sqft?:  "))
+    cost = sqft * seeds_price
+    tax_cost = cost * sales_tax
+    final_total = tax_cost + cost
+    end_cost (sqft, product, final_total)
+    return sqft, product, final_total
+
+def mulch_func():
+    product = "mulch"
+    sqft = float(input("How many sqft?:  "))
+    cost = sqft * mulch_price
+    tax_cost = cost * sales_tax
+    final_total = tax_cost + cost
+    end_cost (sqft, product, final_total)
+    return sqft, product, final_total
+
+def gravel_func():
+    product = "gravel"
+    sqft = float(input("How many sqft?:  "))
+    cost = sqft * gravel_price
+    tax_cost = cost * sales_tax
+    final_total = tax_cost + cost
+    end_cost (sqft, product, final_total)
+    return sqft, product, final_total
+
+
+def pavers_func():
+    product = "pavers"
+    sqft = float(input("How many sqft?:  "))
+    cost = sqft * pavers_price
+    tax_cost = cost * sales_tax
+    final_total = tax_cost + cost
+    end_cost (sqft, product, final_total)
+    return sqft, product, final_total
+
+#the above functions complete the end cost for the transaction
+
+def end_cost(sqft, product, final_total):
+    print("You ordered  " + str(sqft) + " feet of"  "  " + product + " for a total of ${:.2f} ".format(final_total))
+main_menu()
+
+
