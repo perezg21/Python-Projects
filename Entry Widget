@@ -1,0 +1,66 @@
+# Programmer: Lupe Perez
+# Updated: February 1 2024
+# Reason for assignment:
+# Creating Python Widget, entry widget (textbox) and buttons to allow the user
+# to type in data and delete the data entered
+
+from tkinter import *
+
+
+def submit():
+    username = entry.get()
+    print("Hello " + username)
+
+
+def delete():
+    entry.delete(0, END)  # deletes the entire line of text
+
+
+def backspace():
+    entry.delete(len(entry.get()) - 1, END)  # deletes last character
+
+
+window = Tk()
+
+window.title("Entry Widget")
+
+
+submit_button = Button(
+    window,
+    text="Submit",
+    command=submit
+)
+submit_button.pack(side=RIGHT)
+
+
+delete_button = Button(
+    window,
+    text="Delete",
+    command=delete
+)
+delete_button.pack(side=RIGHT)
+
+
+backspace_button = Button(
+    window,
+    text="Backspace",
+    command=backspace
+)
+backspace_button.pack(side=RIGHT)
+
+
+entry = Entry(window)
+
+entry.config(font=('Ink Free', 50))
+entry.config(bg='#111111')
+entry.config(fg='white')
+entry.config(width=10)
+
+# entry.insert(0, 'Spongebob')
+# entry.config(state=DISABLED)  # ACTIVE/DISABLED
+# entry.config(show='*')
+# entry.config(show='$')
+
+entry.pack()
+
+window.mainloop()
