@@ -1,0 +1,59 @@
+# Midterm Exam
+# prepared by Lupe Perez
+
+
+print("------------------------------")
+print("------------------------------")
+
+phones = {
+    "1 Galaxy Z": 1000,
+    "2 iPhone 15": 1000,
+    "3 Samsung S20": 1200
+}
+
+print("----------Phones-------------")
+print("-----------------------------")
+
+# Displays the phone menu
+for key, value in phones.items():
+    print(f"{key:15}: ${value:.2f}")
+
+print("-----------------------------")
+print("-----------------------------")
+
+# Menu options
+menu_options = ('1', '2', '3')
+
+# Selection of menu items
+while True:
+    print()
+    print("Cellular Devices Available")
+    print("1 = Galaxy Z")
+    print("2 = iPhone 15")
+    print("3 = Samsung S20")
+    print()
+
+    user_input = input("Enter the device number available: ")
+
+    if user_input in menu_options:
+        break
+    else:
+        print()
+        print("DEVICE NOT AVAILABLE")
+
+
+# Determine which phone was selected
+if user_input == "1":
+    print("You selected Galaxy Z")
+    price = 1000
+
+elif user_input == "2":
+    print("You selected iPhone 15")
+    price = 1000
+
+elif user_input == "3":
+    print("You selected Samsung S20")
+    price = 1200
+
+
+print(f"Price: ${price:.2f}")
